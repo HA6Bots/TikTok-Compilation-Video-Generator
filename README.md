@@ -251,7 +251,6 @@ backupVideos = True  Will automatically backup each video send to the video g
 
 # Python (recommend 3.7+ and 64bit on windows)
 
-•	ftplib
 
 •	requests
 
@@ -262,8 +261,6 @@ backupVideos = True  Will automatically backup each video send to the video g
 •	Opencv-python
 
 •	Pyftpdlib
-
-•	Pysubs2
 
 •	Pydub
 

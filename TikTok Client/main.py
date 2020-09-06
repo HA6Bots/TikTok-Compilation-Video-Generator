@@ -1,13 +1,10 @@
 from PyQt5 import QtWidgets
-from moviepy.editor import *
 from threading import Thread
 import settings
 import clientUI
 import os
 import client
-import requests
-import scriptwrapper
-from time import sleep
+import sys
 
 current_path = os.path.dirname(os.path.realpath(__file__))
 script = None

@@ -5,22 +5,17 @@ from PyQt5 import QtGui
 from pymediainfo import MediaInfo
 from PyQt5.QtGui import QIcon
 
-#import scriptwrapper
 import cv2
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaPlaylist, QMediaContent
 from PyQt5.QtCore import QDir, Qt, QUrl, pyqtSignal, QPoint, QRect, QObject
 from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer, QVideoFrame, QAbstractVideoSurface, QAbstractVideoBuffer, QVideoSurfaceFormat
 import client
-import subprocess
 from PyQt5.QtWidgets import *
 import scriptwrapper
 import pickle
-import main
-import random
-from moviepy.editor import *
 from threading import Thread
-import time
 import settings
+import os
 
 games = None
 

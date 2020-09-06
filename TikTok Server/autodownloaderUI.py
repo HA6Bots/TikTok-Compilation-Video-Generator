@@ -304,14 +304,14 @@ class PassiveDownloaderWindow(QMainWindow):
         self.downloadLog.append("Starting Clip Search for %s filters" % len(self.autoDownloadQueue))
 
     def logAddClipFoundInfo(self, game_name, amount, period): # called in twitch
-        self.downloadLog.append("Found %s for game %s for period %s" % (amount, game_name, period))
+        self.downloadLog.append("Found %s for filter %s for period %s" % (amount, game_name, period))
 
     def logAddTotalClipFoundInfo(self, game_name, amount): # called in twitch
-        self.downloadLog.append("Found %s for game %s" % (amount, game_name))
+        self.downloadLog.append("Found %s for filter %s" % (amount, game_name))
         self.autoWrapper.findClips()
 
     def logCompletedClipSearchInfo(self): # called in autodownloader
-        self.downloadLog.append("Completed clip search for %s games" % len(self.autoDownloadQueue))
+        self.downloadLog.append("Completed clip search for %s filters" % len(self.autoDownloadQueue))
         self.logGetAmountClips()
         self.refreshFilterClips.setEnabled(True)
         self.addFilter.setEnabled(True)

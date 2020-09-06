@@ -1,20 +1,12 @@
 from PyQt5 import QtWidgets
-from moviepy.editor import *
 from threading import Thread
 #import vidGen
 import server
 import autodownloaderUI
 import os
-import ftplib
-from time import sleep
 import database
 import settings
-import scriptwrapper
-from pydub import AudioSegment
-import random
-from filtercreator import FilterCreationWindow
-import settings
-
+import sys
 
 
 

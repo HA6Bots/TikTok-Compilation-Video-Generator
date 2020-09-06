@@ -1,4 +1,3 @@
-from moviepy.editor import *
 import random
 import os
 import time
@@ -7,14 +6,10 @@ import subprocess
 import re
 import cv2
 from time import sleep
-import string
 import datetime
-#import clientUI
 from distutils.dir_util import copy_tree
-from pysubs2 import SSAFile, SSAEvent, SSAStyle, make_time
 import pickle
 import settings
-from pydub import AudioSegment
 
 #File Paths
 

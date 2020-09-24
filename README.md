@@ -17,6 +17,10 @@ Since the bot is split up into three different programs, communications between 
 
 3.	A video generator that compiles the clips from the video editor, generating a mp4 video where that you can upload to any platform.
 
+Bot Showcase Video:
+https://www.youtube.com/watch?v=-yXEDeiQBuk
+
+
 There are three separate programs that make up the TikTok bot.
 
 # 1.	Server Program

@@ -213,6 +213,9 @@ def autoDownloadClips(filterName, clips, window):
     for i, clip in enumerate(clips):
         print("Downloading Clip %s/%s" % (i + 1, len(clips)))
         try:
+            opener = urllib.request.build_opener()
+            opener.addheaders = [('User-agent', 'okhttp'), ('referer', 'https://www.tiktok.com/')]
+            urllib.request.install_opener(opener)
             urllib.request.urlretrieve(clip.url, f"{settings.vid_filepath}/{clip.author_name}-{clip.id}.mp4")
             clip.mp4 = f"{clip.author_name}-{clip.id}"
 

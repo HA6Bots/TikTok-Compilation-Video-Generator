@@ -1,12 +1,3 @@
-# Major Bug - Unofficial TikTok API Depreciated
-
-Unfortunately David Teather's Unofficial TikTok API Python module is no longer supported.
-This is a major bug as videos can no longer be found and downloaded.
-
-Please be patient while we look for a solution/workaround to this.
-
-Referring post https://github.com/davidteather/TikTok-Api/releases/tag/V3.5.3
-
 # TikTok-Compilation-Video-Generator
 
 A system of bots that collects clips automatically via custom made filters, lets you easily browse these clips, and puts them together into a compilation video ready to be uploaded straight to any social media platform. Full VPS support is provided, along with an accounts system so multiple users can use the bot at once.

@@ -134,7 +134,7 @@ def getAllClips(filter, amount, window):
 
     while True:
         try:
-            api = TikTokApi("browsermob-proxy/bin/browsermob-proxy")
+            api = TikTokApi()
 
             # The Number of trending TikToks you want to be displayed
 

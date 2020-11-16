@@ -1,3 +1,5 @@
+# Currently broken due to changes to the unofficial TikTokAPI. Please be patient while a fix is being worked on.
+
 # TikTok-Compilation-Video-Generator
 
 A system of bots that collects clips automatically via custom made filters, lets you easily browse these clips, and puts them together into a compilation video ready to be uploaded straight to any social media platform. Full VPS support is provided, along with an accounts system so multiple users can use the bot at once.

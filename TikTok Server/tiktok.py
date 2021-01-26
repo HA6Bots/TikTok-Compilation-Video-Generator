@@ -1,21 +1,22 @@
 
-import string
-import requests
-import urllib.request
 import database
 import scriptwrapper
-from TikTokApi import TikTokApi
-import shutil
+from TikTokAPI import TikTokAPI
 import traceback, sys
-import subprocess
 import settings
 from time import sleep
 from pymediainfo import MediaInfo
 
 
+cookie = {
+  "s_v_web_id": settings.s_v_web_id,
+  "tt_webid": settings.tt_webid
+}
+
+api = TikTokAPI(cookie=cookie)
+
 forceStop = False
 
-#GreyFieldMedia
 
 
 def getAllClips(filter, amount, window):
@@ -40,10 +41,10 @@ def getAllClips(filter, amount, window):
     def attemptAddScripts(results, typeofrequest):
         newIds = []
         amountJustAdded = 0
-        for i, tiktok in enumerate(results):
+        parseType = "itemList" if typeofrequest == "Hashtag" else "items"
+        for i, tiktok in enumerate(results[parseType]):
             #print("downloading %s/%s" % (i+1, len(result)))
             # Prints the text of the tiktok
-
             videoURL = None
             author = None
             vidId = None
@@ -56,45 +57,20 @@ def getAllClips(filter, amount, window):
             duration = None
             hashtags = None
 
-            if typeofrequest == "Hashtag":
-                videoURL = tiktok["itemInfos"]["video"]["urls"][0]
-                author = tiktok["musicInfos"]["authorName"]
-                vidId = tiktok["itemInfos"]["id"]
-                createTime = tiktok["itemInfos"]["createTime"]
-                text = tiktok["itemInfos"]["text"]
-                diggCount = tiktok["itemInfos"]["diggCount"]
-                shareCount = tiktok["itemInfos"]["shareCount"]
-                playCount = tiktok["itemInfos"]["playCount"]
-                commentCount = tiktok["itemInfos"]["commentCount"]
-                duration = tiktok["itemInfos"]["video"]["videoMeta"]["duration"]
-                hashtags = []
-                for hashtag in tiktok["textExtra"]:
-                    tag = hashtag["HashtagName"]
-                    if not tag == "":
-                        hashtags.append(hashtag["HashtagName"])
-            elif typeofrequest == "Author" or typeofrequest == "Trending":
-                try:
-                    videoURL = tiktok["video"]["downloadAddr"]
-                    author = tiktok["music"]["authorName"]
-                    vidId = tiktok["id"]
-                    createTime = tiktok["createTime"]
-                    text = tiktok["desc"]
-                    diggCount = tiktok["stats"]["diggCount"]
-                    shareCount = tiktok["stats"]["shareCount"]
-                    playCount = tiktok["stats"]["playCount"]
-                    commentCount = tiktok["stats"]["commentCount"]
-                    duration = tiktok["video"]["duration"]
-                    try:
-                        hashtags = []
-                        for hashtag in tiktok["textExtra"]:
-                            tag = hashtag["hashtagName"]
-                            if not tag == "":
-                                hashtags.append(hashtag["hashtagName"])
-                    except Exception as e:
-                        print("no hashtags")
-                except Exception as e:
-                    print("error parsing data")
-                    continue
+            try:
+                videoURL = tiktok["video"]["downloadAddr"]
+                author = tiktok["music"]["authorName"]
+                vidId = tiktok["id"]
+                createTime = tiktok["createTime"]
+                text = tiktok["desc"]
+                diggCount = tiktok["stats"]["diggCount"]
+                shareCount = tiktok["stats"]["shareCount"]
+                playCount = tiktok["stats"]["playCount"]
+                commentCount = tiktok["stats"]["commentCount"]
+                duration = tiktok["video"]["duration"]
+            except Exception as e:
+                print("error parsing data")
+                continue
 
             newIds.append(vidId)
 
@@ -134,36 +110,34 @@ def getAllClips(filter, amount, window):
 
     while True:
         try:
-            api = TikTokApi()
-
             # The Number of trending TikToks you want to be displayed
 
             new_ids = []
 
             if filterObject.searchType == "Hashtag":
                 hashtags = filterObject.inputText
-                evenSplitHashtag = int(searchAmount / len(hashtags))
+                count = int(searchAmount / len(hashtags))
                 for hashtag in hashtags:
-                    print("Looking for %s clips for hashtag %s" % (evenSplitHashtag, hashtag))
-                    results = api.byHashtag(hashtag, evenSplitHashtag)
+                    print("Looking for %s clips for hashtag %s" % (count, hashtag))
+                    results = api.getVideosByHashTag(hashtag, count)
 
                     new_ids.append(attemptAddScripts(results, "Hashtag"))
 
             elif filterObject.searchType == "Author":
                 authors = filterObject.inputText
-                evenSplitAuthors = int(searchAmount / len(authors))
+                count = int(searchAmount / len(authors))
 
 
                 for author in authors:
-                    print("Looking for %s clips for author %s" % (evenSplitAuthors, author))
-                    results = api.byUsername(author, evenSplitAuthors)
+                    print("Looking for %s clips for author %s" % (count, author))
+                    results = api.getVideosByUserName(author, count)
 
 
                     new_ids.append(attemptAddScripts(results, "Author"))
             elif filterObject.searchType == "Trending":
                 print("Looking for %s trending clips" % searchAmount)
 
-                results = api.trending(count=searchAmount)
+                results = api.getTrending(searchAmount)
 
 
                 new_ids.append(attemptAddScripts(results, "Trending"))
@@ -179,6 +153,7 @@ def getAllClips(filter, amount, window):
 
 
             if len(clips) >= amount:
+                print("done")
                 break
             else:
                 searchAmount *= 2
@@ -196,11 +171,10 @@ def getAllClips(filter, amount, window):
             sleep(5)
 
     print(f"Found {len(clips)} unique clips")
-    window.update_log_found_total_clips.emit(filterName, len(clips))
-
     for clip in clips:
         database.addFoundClip(clip, filterName)
 
+    print("DONE!")
     return clips
 
 
@@ -208,16 +182,12 @@ def getAllClips(filter, amount, window):
 def autoDownloadClips(filterName, clips, window):
     global forceStop
     #Downloading the clips with custom naming scheme
-    window.update_log_start_downloading_game.emit(filterName, len(clips))
+    #window.update_log_start_downloading_game.emit(filterName, len(clips))
     print('Downloading...')
     for i, clip in enumerate(clips):
         print("Downloading Clip %s/%s" % (i + 1, len(clips)))
         try:
-            opener = urllib.request.build_opener()
-            opener.addheaders = [('User-agent', 'okhttp'), ('referer', 'https://www.tiktok.com/')]
-            urllib.request.install_opener(opener)
-            urllib.request.urlretrieve(clip.url, f"{settings.vid_filepath}/{clip.author_name}-{clip.id}.mp4")
-            clip.mp4 = f"{clip.author_name}-{clip.id}"
+            api.downloadVideoById(clip.id, f"{settings.vid_filepath}/{clip.author_name}-{clip.id}.mp4")
 
             media_info = MediaInfo.parse(f"{settings.vid_filepath}/{clip.author_name}-{clip.id}.mp4")
             duration = media_info.tracks[0].duration
@@ -233,7 +203,6 @@ def autoDownloadClips(filterName, clips, window):
             print("Forced Stop Downloading Process")
             forceStop = False
             break
-    window.update_done_downloading_game.emit(filterName, len(clips))
 
 
 

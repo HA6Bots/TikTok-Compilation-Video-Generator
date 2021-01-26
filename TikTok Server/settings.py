@@ -32,7 +32,8 @@ videoGeneratorFTPPassword = "password"
 databasehost = "localhost"
 databaseuser = "root"
 databasepassword = ""
-
+s_v_web_id = ""
+tt_webid = ""
 
 language = "en"
 
@@ -60,6 +61,8 @@ def generateConfigFile():
         config.set("video_generator_location", 'ftp_password', 'password')
         config.add_section("tiktok")
         config.set("tiktok", 'language', 'en')
+        config.set("tiktok", 's_v_web_id', '')
+        config.set("tiktok", 'tt_webid', '')
         config.add_section("mysql_database")
         config.set("mysql_database", 'databasehost', 'localhost')
         config.set("mysql_database", 'databaseuser', 'root')
@@ -73,7 +76,7 @@ def generateConfigFile():
 
 def loadValues():
     global FTP_PORT, HTTP_PORT, serveraddress, videoGeneratorAddress, videoGeneratorFTPPort, videoGeneratorHTTPPort, videoGeneratorFTPUser,\
-        videoGeneratorFTPPassword, language, databasehost, databasepassword, databaseuser
+        videoGeneratorFTPPassword, language, databasehost, databasepassword, databaseuser, s_v_web_id, tt_webid
     config = configparser.RawConfigParser()
     config.read(configpath)
     serveraddress = config.get('server_details', 'address')
@@ -85,6 +88,8 @@ def loadValues():
     videoGeneratorFTPUser = config.get('video_generator_location', 'ftp_user')
     videoGeneratorFTPPassword = config.get('video_generator_location', 'ftp_password')
     language = config.get('tiktok', 'language')
+    s_v_web_id = config.get('tiktok', 's_v_web_id')
+    tt_webid = config.get('tiktok', 'tt_webid')
     databasehost = config.get("mysql_database", 'databasehost')
     databaseuser = config.get("mysql_database", 'databaseuser')
     databasepassword = config.get("mysql_database", 'databasepassword')

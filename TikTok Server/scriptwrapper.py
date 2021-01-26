@@ -147,7 +147,7 @@ class ClipWrapper():
         self.author_name = author_name
         self.audio = 1
         self.isUsed = False
-        self.mp4 = "AndreasGreenLive-702952046"
+        self.mp4 = "%s-%s" % (author_name, id)
         self.isIntro = False
         self.vid_duration = None
         self.createTime = createTime

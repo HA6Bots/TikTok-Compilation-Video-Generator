@@ -46,7 +46,11 @@ def getFileNames(file_path):
     files = [os.path.splitext(filename)[0] for filename in os.listdir(file_path)]
     return files
 
+
 if __name__ == "__main__":
+
+
+
     current_directory = os.path.dirname(os.path.realpath(__file__))
     os.chdir(current_directory)
     settings.generateConfigFile()
@@ -72,11 +76,8 @@ if __name__ == "__main__":
         os.mkdir(f"{settings.asset_file_path}/Intros")
         os.mkdir(f"{settings.asset_file_path}/Music")
 
-
-
     database.startDatabase()
     server.init()
 
     App()
-
 

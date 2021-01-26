@@ -111,7 +111,7 @@ class PassiveDownloaderWindow(QMainWindow):
         self.removeUser.clicked.connect(self.deleteFTPUser)
         self.finishVidDirectory.clicked.connect(self.openFinishedVids)
         self.clipBinDirectory.clicked.connect(self.openClipBin)
-
+        self.startAuto.setEnabled(False)
 
         self.populateComboBox()
 
@@ -213,7 +213,8 @@ class PassiveDownloaderWindow(QMainWindow):
         self.startFinding.setEnabled(True)
         self.startFinding.setEnabled(True)
         self.stopFinding.setEnabled(False)
-        self.startAuto.setEnabled(True)
+        # self.startAuto.setEnabled(True)
+        self.startAuto.setEnabled(False)
         self.stopAuto.setEnabled(False)
         self.autoWrapper.stop()
         pass
@@ -237,7 +238,8 @@ class PassiveDownloaderWindow(QMainWindow):
         self.addFilter.setEnabled(True)
         self.clearFilters.setEnabled(True)
         self.stopFinding.setEnabled(False)
-        self.startAuto.setEnabled(True)
+        # self.startAuto.setEnabled(True)
+        self.startAuto.setEnabled(False)
         self.stopAuto.setEnabled(False)
         self.startFinding.setEnabled(True)
         self.startDownloading.setEnabled(True)
@@ -277,6 +279,7 @@ class PassiveDownloaderWindow(QMainWindow):
         self.logGetAmountClips()
 
     def addFilterToQueue(self):
+        self.clearFilterQueue()
         filter = self.filterSelect.currentText()
         if filter not in [tempfilter[0] for tempfilter in self.autoDownloadQueue]:
             filterObject = database.getSavedFilterByName(filter)
@@ -319,7 +322,8 @@ class PassiveDownloaderWindow(QMainWindow):
         self.startFinding.setEnabled(True)
         self.stopFinding.setEnabled(False)
         self.stopAuto.setEnabled(False)
-        self.startAuto.setEnabled(True)
+        # self.startAuto.setEnabled(True)
+        self.startAuto.setEnabled(False)
 
 
     def logGetAmountClips(self): # called here

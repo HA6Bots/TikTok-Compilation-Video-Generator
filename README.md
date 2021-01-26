@@ -179,8 +179,11 @@ ftp_password = password  Video Generator FTP Client password
 [tiktok]
 
 language = en  Clip language
+
 s_v_web_id =
+
 tt_webid = 
+
 "Get your keys from Cookie. You can get them from the Applications tab in Chrome developer console.
 By default it used hardcoded values which may not work after some time.
 The keys to extract are s_v_web_id and tt_webid"

@@ -1,4 +1,4 @@
-# NOW FIXED using new TikTok API! Special thanks to https://github.com/avilash/TikTokAPI-Python for the API! Thanks for being patient. See below server config file instructions for new info.
+# NOW FIXED using new TikTok API! Special thanks to https://github.com/avilash/TikTokAPI-Python for the API! Thanks for being patient. See below server config file instructions for new info. Feedback Welcome!
 
 # TikTok-Compilation-Video-Generator
 

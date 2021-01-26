@@ -276,5 +276,5 @@ backupVideos = True  Will automatically backup each video send to the video g
 
 •	python-mysql-connector
 
-•	TikTokApi
+•	PyTikTokAPI
 

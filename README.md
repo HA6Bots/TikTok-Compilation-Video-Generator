@@ -1,4 +1,4 @@
-# Currently broken due to changes to the unofficial TikTokAPI. Please be patient while a fix is being worked on.
+# NOW FIXED using new TikTok API! Special thanks to https://github.com/avilash/TikTokAPI-Python for the API! Thanks for being patient. See below server config file instructions for new info.
 
 # TikTok-Compilation-Video-Generator
 
@@ -179,7 +179,11 @@ ftp_password = password  Video Generator FTP Client password
 [tiktok]
 
 language = en  Clip language
-
+s_v_web_id =
+tt_webid = 
+"Get your keys from Cookie. You can get them from the Applications tab in Chrome developer console.
+By default it used hardcoded values which may not work after some time.
+The keys to extract are s_v_web_id and tt_webid"
 
 [mysql_database]
 

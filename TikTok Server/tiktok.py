@@ -39,72 +39,76 @@ def getAllClips(filter, amount, window):
     oldIds = []
 
     def attemptAddScripts(results, typeofrequest):
-        newIds = []
-        amountJustAdded = 0
-        parseType = "itemList" if typeofrequest == "Hashtag" else "items"
-        for i, tiktok in enumerate(results[parseType]):
-            #print("downloading %s/%s" % (i+1, len(result)))
-            # Prints the text of the tiktok
-            videoURL = None
-            author = None
-            vidId = None
-            createTime = None
-            text = None
-            diggCount = None
-            shareCount = None
-            playCount = None
-            commentCount = None
-            duration = None
-            hashtags = None
+        try:
+            newIds = []
+            amountJustAdded = 0
+            parseType = "itemList" if typeofrequest == "Hashtag" else "items"
+            for i, tiktok in enumerate(results[parseType]):
+                #print("downloading %s/%s" % (i+1, len(result)))
+                # Prints the text of the tiktok
+                videoURL = None
+                author = None
+                vidId = None
+                createTime = None
+                text = None
+                diggCount = None
+                shareCount = None
+                playCount = None
+                commentCount = None
+                duration = None
+                hashtags = None
 
-            try:
-                videoURL = tiktok["video"]["downloadAddr"]
-                author = tiktok["music"]["authorName"]
-                vidId = tiktok["id"]
-                createTime = tiktok["createTime"]
-                text = tiktok["desc"]
-                diggCount = tiktok["stats"]["diggCount"]
-                shareCount = tiktok["stats"]["shareCount"]
-                playCount = tiktok["stats"]["playCount"]
-                commentCount = tiktok["stats"]["commentCount"]
-                duration = tiktok["video"]["duration"]
-            except Exception as e:
-                print("error parsing data")
-                continue
-
-            newIds.append(vidId)
-
-            if vidId in bad_ids:
-                continue
-
-            if vidId in [newclip.id for newclip in clips]:
-                continue
-
-            if filterObject.likeCount is not None:
-                if diggCount < filterObject.likeCount:
-                    bad_ids.append(vidId)
+                try:
+                    videoURL = tiktok["video"]["downloadAddr"]
+                    author = tiktok["music"]["authorName"]
+                    vidId = tiktok["id"]
+                    createTime = tiktok["createTime"]
+                    text = tiktok["desc"]
+                    diggCount = tiktok["stats"]["diggCount"]
+                    shareCount = tiktok["stats"]["shareCount"]
+                    playCount = tiktok["stats"]["playCount"]
+                    commentCount = tiktok["stats"]["commentCount"]
+                    duration = tiktok["video"]["duration"]
+                except Exception as e:
+                    print("error parsing data")
                     continue
 
-            if filterObject.shareCount is not None:
-                if shareCount < filterObject.shareCount:
-                    bad_ids.append(vidId)
+                newIds.append(vidId)
+
+                if vidId in bad_ids:
                     continue
 
-            if filterObject.playCount is not None:
-                if playCount < filterObject.playCount:
-                    bad_ids.append(vidId)
+                if vidId in [newclip.id for newclip in clips]:
                     continue
 
-            if filterObject.commentCount is not None:
-                if commentCount < filterObject.commentCount:
-                    bad_ids.append(vidId)
-                    continue
+                if filterObject.likeCount is not None:
+                    if diggCount < filterObject.likeCount:
+                        bad_ids.append(vidId)
+                        continue
 
-            tiktok_clip = scriptwrapper.ClipWrapper(vidId, videoURL, author, createTime, text, diggCount, shareCount, playCount, commentCount, duration)
-            clips.append(tiktok_clip)
-            amountJustAdded += 1
+                if filterObject.shareCount is not None:
+                    if shareCount < filterObject.shareCount:
+                        bad_ids.append(vidId)
+                        continue
 
-        return newIds
+                if filterObject.playCount is not None:
+                    if playCount < filterObject.playCount:
+                        bad_ids.append(vidId)
+                        continue
+
+                if filterObject.commentCount is not None:
+                    if commentCount < filterObject.commentCount:
+                        bad_ids.append(vidId)
+                        continue
+
+                tiktok_clip = scriptwrapper.ClipWrapper(vidId, videoURL, author, createTime, text, diggCount, shareCount, playCount, commentCount, duration)
+                clips.append(tiktok_clip)
+                amountJustAdded += 1
+
+            return newIds
+        except Exception:
+            print("error occurred parsing: %s" % results)
+            return None
 
     searchAmount = amount
 
@@ -121,7 +125,10 @@ def getAllClips(filter, amount, window):
                     print("Looking for %s clips for hashtag %s" % (count, hashtag))
                     results = api.getVideosByHashTag(hashtag, count)
 
-                    new_ids.append(attemptAddScripts(results, "Hashtag"))
+                    new = attemptAddScripts(results, "Trending")
+                    if new is None:
+                        break
+                    new_ids.append(new)
 
             elif filterObject.searchType == "Author":
                 authors = filterObject.inputText
@@ -132,15 +139,20 @@ def getAllClips(filter, amount, window):
                     print("Looking for %s clips for author %s" % (count, author))
                     results = api.getVideosByUserName(author, count)
 
-
-                    new_ids.append(attemptAddScripts(results, "Author"))
+                    new = attemptAddScripts(results, "Trending")
+                    if new is None:
+                        break
+                    new_ids.append(new)
             elif filterObject.searchType == "Trending":
                 print("Looking for %s trending clips" % searchAmount)
 
                 results = api.getTrending(searchAmount)
 
 
-                new_ids.append(attemptAddScripts(results, "Trending"))
+                new = attemptAddScripts(results, "Trending")
+                if new is None:
+                    break
+                new_ids.append(new)
 
             if new_ids == oldIds:
                 print("Found exactly the same ids in two consecutive searches. Terminating search process")

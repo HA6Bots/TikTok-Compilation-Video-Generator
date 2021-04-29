@@ -1,5 +1,6 @@
 import os
 import configparser
+from sys import platform
 
 currentPath = os.path.dirname(os.path.realpath(__file__))
 
@@ -18,15 +19,21 @@ block_size = 262144
 
 config = configparser.ConfigParser()
 
+configpath = None
+
+if platform == "linux" or platform == "linux2" or platform == "darwin":
+    configpath = "%s/config.ini" % currentPath
+else:
+    configpath = "%s\\config.ini" % currentPath
+
 enforceInterval = True
 enforceIntro = True
 enforceOutro = True
 enforceFirstClip = True
 
 def generateConfigFile():
-    path = "%s\\config.ini" % currentPath
-    if not os.path.isfile(path):
-        print("Could not find config file in location %s, creating a new one" % path)
+    if not os.path.isfile(configpath):
+        print("Could not find config file in location %s, creating a new one" % configpath)
         config.add_section("server_location")
         config.set("server_location", 'address', '127.0.0.1')
         config.set("server_location", 'server_http_port', '8000')
@@ -42,17 +49,17 @@ def generateConfigFile():
         config.set("video_settings", "enforce_firstclip", "True")
 
 
-        with open("%s\\config.ini" % currentPath, 'w') as configfile:
+        with open(configpath, 'w') as configfile:
             config.write(configfile)
     else:
-        print("Found config in location %s" % path)
+        print("Found config in location %s" % configpath)
         loadValues()
 
 def loadValues():
     global FTP_USER, FTP_PASSWORD, FTP_PORT, HTTP_PORT, address, autoLogin, \
         enforceFirstClip, enforceInterval, enforceIntro, enforceOutro
     config = configparser.ConfigParser()
-    config.read("%s\\config.ini" % currentPath)
+    config.read(configpath)
     address = config.get('server_location', 'address')
     HTTP_PORT = config.getint('server_location', 'server_http_port')
     FTP_PORT = config.getint('server_location', 'server_ftp_port')

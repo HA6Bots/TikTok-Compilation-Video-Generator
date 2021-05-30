@@ -41,7 +41,7 @@ config = configparser.RawConfigParser()
 
 configpath = None
 
-if platform == "linux" or platform == "linux2":
+if platform == "linux" or platform == "linux2" or platform == "darwin":
     configpath = "%s/config.ini" % currentPath
 else:
     configpath = "%s\\config.ini" % currentPath

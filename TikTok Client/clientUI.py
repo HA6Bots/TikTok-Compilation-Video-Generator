@@ -379,9 +379,9 @@ class clipEditor(QMainWindow):
         self.updateClipDuration()
         self.mediaPlayer.stop()
         if len(mp4file.split("/")) > 2:
-            self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(f'{mp4file}')));
+            self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(f'{current_path}/{mp4file}')));
         else:
-            self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(f'TempClips/{mp4file}.mp4')))
+            self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(f'{current_path}/TempClips/{mp4file}.mp4')))
         self.mediaPlayer.setVolume(audio * 100)
         self.estTime.setText(str(self.videoWrapper.scriptWrapper.getEstimatedVideoTime()))
         self.videoLength.setText(f'{round(video_duration, 1)}')

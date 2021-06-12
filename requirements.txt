@@ -1,0 +1,8 @@
+requests
+PyQt5
+Pymediainfo
+Opencv-python
+Pyftpdlib
+Pydub
+mysql-connector-python
+PyTikTokAPI

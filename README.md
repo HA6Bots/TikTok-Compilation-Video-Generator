@@ -277,7 +277,7 @@ backupVideos = True  Will automatically backup each video send to the video g
 
 •	Pydub
 
-•	python-mysql-connector
+•	mysql-connector-python
 
 •	PyTikTokAPI
 

@@ -71,7 +71,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
 
 A system of bots that collects clips automatically via custom made filters, lets you easily browse these clips, and puts them together into a compilation video ready to be uploaded straight to any social media platform. Full VPS support is provided, along with an accounts system so multiple users can use the bot at once. This bot is split up into three separate programs. The server. The client. The video generator. These programs perform different functions that when combined creates a very powerful system for auto generating compilation videos.
 
@@ -355,7 +355,7 @@ Additional settings that only take effect on start-up are stored in a config fil
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
 [contributors-url]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator/graphs/contributors
 [forks-shield]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
 [forks-url]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator/network/members

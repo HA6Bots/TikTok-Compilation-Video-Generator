@@ -24,7 +24,8 @@
     <br />
     <br />
    
-    
+    <a href="https://github.com/HA6Bots/TikTok-Compilation-Video-Generator/issues">View Demo</a>
+	.
     <a href="https://github.com/HA6Bots/TikTok-Compilation-Video-Generator/issues">Report Bug</a>
     ·
     <a href="https://github.com/HA6Bots/TikTok-Compilation-Video-Generator/issues">Request Feature</a>

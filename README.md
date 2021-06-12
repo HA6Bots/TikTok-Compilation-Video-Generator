@@ -357,13 +357,13 @@ Additional settings that only take effect on start-up are stored in a config fil
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
 [contributors-url]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator/graphs/contributors
-[forks-shield]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
 [forks-url]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator/network/members
-[stars-shield]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
 [stars-url]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator/stargazers
-[issues-shield]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
 [issues-url]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator/issues
-[license-shield]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/HA6Bots/TikTok-Compilation-Video-Generator.svg?style=for-the-badge
 [license-url]: https://github.com/HA6Bots/TikTok-Compilation-Video-Generator/blob/master/LICENSE
 
 [product-screenshot]: images/screenshot.png

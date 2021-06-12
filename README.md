@@ -56,15 +56,12 @@
 	    <li><a href="#server-program">Server Program</a></li>
 	    <li><a href="#video-editor-program">Video Editor Program</a></li>
         <li><a href="#video-generator-program">Video Generator Program</a></li>
-		
-      </ul>
-	  
+	  </ul>
 	 <a href="#config-file-explanation">Config Files and Explanation</a>
       <ul>
 	    <li><a href="#server-config">Server Config</a></li>
 	    <li><a href="#video-editor-config">Video Editor Config</a></li>
         <li><a href="#video-generator-config">Video Generator Config</a></li>
-		
       </ul> 
   </ol>
 </details>

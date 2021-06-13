@@ -51,18 +51,22 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#license">License</a></li>
-    <a href="#file-system">File System and Explanation</a>
+	<li>
+      <a href="#file-system">File System and Explanation</a>
       <ul>
 	    <li><a href="#server-program">Server Program</a></li>
 	    <li><a href="#video-editor-program">Video Editor Program</a></li>
         <li><a href="#video-generator-program">Video Generator Program</a></li>
 	  </ul>
-	 <a href="#config-file-explanation">Config Files and Explanation</a>
+	</li>
+    <li>	 
+	  <a href="#config-file-explanation">Config Files and Explanation</a>
       <ul>
 	    <li><a href="#server-config">Server Config</a></li>
 	    <li><a href="#video-editor-config">Video Editor Config</a></li>
         <li><a href="#video-generator-config">Video Generator Config</a></li>
       </ul> 
+	</li> 
   </ol>
 </details>
 
@@ -258,99 +262,99 @@ Additional settings that only take effect on start-up are stored in a config fil
 
 [server_details]
 
-* address = 127.0.0.1  Server Address
+* address = 127.0.0.1 <-- Server Address
 
-* http_port = 8000  Server HTTP Port
+* http_port = 8000 <-- Server HTTP Port
 
-* ftp_port = 2121  Server FTP Port
+* ftp_port = 2121 <-- Server FTP Port
 
 [video_generator_location]
 
-* address = 127.0.0.1  Video Generator Address
+* address = 127.0.0.1 <-- Video Generator Address
 
-* http_port = 8001 Video Generator HTTP Port
+* http_port = 8001 <-- Video Generator HTTP Port
 
-* ftp_port = 2122  Video Generator FTP Port
+* ftp_port = 2122 <-- Video Generator FTP Port
 
-* ftp_user = VidGen  Video Generator FTP Client name
+* ftp_user = VidGen <-- Video Generator FTP Client name
 
-* ftp_password = password  Video Generator FTP Client password
+* ftp_password = password <-- Video Generator FTP Client password
 
 [tiktok]
 
-* language = en  Clip language
+* language = en <-- Clip language
 
-* s_v_web_id =
+* s_v_web_id = value <-- Get from TikTok Cookies , Read Above.
 
-* tt_webid =
+* tt_webid = value <-- Get from TikTok Cookies , Read Above.
 
 [mysql_database]
 
-* databasehost = localhost  MySQL Server address
+* databasehost = localhost <-- MySQL Server address
 
-* databaseuser = root  MySQL Server user
+* databaseuser = root <-- MySQL Server user
 
-* databasepassword =  MySQL Server user password
+* databasepassword =  <-- MySQL Server user password
 
 ### Video Editor Config
 
 [server_location]
 
-* address = 127.0.0.1  Server address
+* address = 127.0.0.1 <-- Server address
 
-* server_http_port = 8000  Server HTTP port
+* server_http_port = 8000 <-- Server HTTP port
 
-* server_ftp_port = 2121  Server FTP port
+* server_ftp_port = 2121 <-- Server FTP port
 
 [auto_login]
 
-* username = admin  User registered in server
+* username = admin <-- User registered in server
 
-* password = password  User registered in server’s password
+* password = password <-- User registered in server’s password
 
-* auto_login = true  Insert the above details into the login window on startup
+* auto_login = true <-- Insert the above details into the login window on startup
 
 [video_settings]
 
-* enforce_interval = True  Forces you to select a interval for your video
+* enforce_interval = True <-- Forces you to select a interval for your video
 
-* enforce_intro = True  Forces you to select a intro for your video
+* enforce_intro = True <-- Forces you to select a intro for your video
 
-* enforce_outro = True  Forces you to select a outro for your video
+* enforce_outro = True <-- Forces you to select a outro for your video
 
-* enforce_firstclip = True  Forces you to select a first clip for your video
+* enforce_firstclip = True <-- Forces you to select a first clip for your video
 
 ### Video Generator Config
 
 [video_generator_details]
 
-* address = 127.0.0.1  Video Generator Address
+* address = 127.0.0.1 <-- Video Generator Address
 
-* http_port = 8001  Video Generator HTTP port
+* http_port = 8001 <-- Video Generator HTTP port
 
-* ftp_port = 2122  Video Generator FTP port
+* ftp_port = 2122 <-- Video Generator FTP port
 
-* ftp_user = VidGen  Video Generator FTP user
+* ftp_user = VidGen <-- Video Generator FTP user
 
-* ftp_password = password  Video Generator FTP user’s password
+* ftp_password = password <-- Video Generator FTP user’s password
 
 [server_location]
 
-* address = 127.0.0.1  Server address
+* address = 127.0.0.1 <-- Server address
 
-* http_port = 8000  Server HTTP port
+* http_port = 8000 <-- Server HTTP port
 
-* ftp_port = 2121  Server FTP port
+* ftp_port = 2121 <-- Server FTP port
 
 [rendering]
 
-* fps = 30  FPS to render video at if useMinimumFps or useMaximumFps are both true
+* fps = 30 <-- FPS to render video at if useMinimumFps or useMaximumFps are both true
 
-* useMinimumFps = True  Sets all the individual clips FPS to the lowest FPS of the clips (recommended)
+* useMinimumFps = True <-- Sets all the individual clips FPS to the lowest FPS of the clips (recommended)
 
-* useMaximumFps = False  Sets all the individual clips FPS to the highest FPS of the clips
+* useMaximumFps = False <-- Sets all the individual clips FPS to the highest FPS of the clips
 
-* backupVideos = True  Will automatically backup each video send to the video generator. These can be rerendered or deleted via the UI
+* backupVideos = True <-- Will automatically backup each video send to the video generator. These can be rerendered or deleted via the UI
 
 
 <!-- MARKDOWN LINKS & IMAGES -->

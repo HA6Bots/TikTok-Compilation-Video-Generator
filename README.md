@@ -133,9 +133,9 @@ This is an example of how to list things you need to use the software and how to
    * Open Developer Tools (cltr+shift+i)
    * In Developer console go to apllication
    * Find cookies Folder .
-   * In cookies folder find 's_v_web_id' and 'tt_webid'
+   * In cookies folder find 's_v_web_id' and 'sid_ucp_v1'
 3. Edit config file in `Tiktok server`
-   * Add value of 's_v_web_id' and 'tt_webid' from cookie.
+   * Add value of 's_v_web_id' and 'sid_ucp_v1' from cookie.
    * Edit database details.
 3. Check and edit config file in `Tiktok Client` and `TikTok Video Generator`
 

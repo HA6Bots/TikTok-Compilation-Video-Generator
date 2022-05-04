@@ -6,12 +6,10 @@ import traceback, sys
 import settings
 from time import sleep
 from pymediainfo import MediaInfo
+from snapTik import downloadFromID
 
 
-cookie = {
-  "s_v_web_id": settings.s_v_web_id,
-  "tt_webid": settings.tt_webid
-}
+cookie = {}
 
 api = TikTokAPI(cookie=cookie)
 
@@ -199,7 +197,8 @@ def autoDownloadClips(filterName, clips, window):
     for i, clip in enumerate(clips):
         print("Downloading Clip %s/%s" % (i + 1, len(clips)))
         try:
-            api.downloadVideoById(clip.id, f"{settings.vid_filepath}/{clip.author_name}-{clip.id}.mp4")
+            path = f"{settings.vid_filepath}/{clip.author_name}-{clip.id}.mp4"
+            downloadFromID(clip.id, path)
 
             media_info = MediaInfo.parse(f"{settings.vid_filepath}/{clip.author_name}-{clip.id}.mp4")
             duration = media_info.tracks[0].duration

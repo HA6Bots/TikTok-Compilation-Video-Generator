@@ -125,7 +125,7 @@ def getAllClips(filter, amount, window):
                     print("Looking for %s clips for hashtag %s" % (count, hashtag))
                     results = api.getVideosByHashTag(hashtag, count)
 
-                    new = attemptAddScripts(results, "Trending")
+                    new = attemptAddScripts(results, "Hashtag")
                     if new is None:
                         break
                     new_ids.append(new)

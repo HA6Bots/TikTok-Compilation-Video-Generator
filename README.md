@@ -8,11 +8,11 @@
 
 
 
-<!-- PROJECT LOGO -->
+<!-- PROJECT Banner -->
 <br />
 <p align="center">
   <a href="https://github.com/HA6Bots/TikTok-Compilation-Video-Generator">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/banner.png" alt="Logo" width="80%">
   </a>
 
   <h3 align="center">TikTok Compilation Video Generator</h3>

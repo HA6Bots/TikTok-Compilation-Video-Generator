@@ -166,6 +166,20 @@ This is an example of how to list things you need to use the software and how to
    *Select and Render Final Video file .
 
 <!-- ROADMAP -->
+## Publishing Your Compilations
+
+Once your compilation video is ready, publish it to TikTok, YouTube Shorts, and Instagram Reels using [Upload-Post](https://upload-post.com):
+
+```bash
+curl -X POST https://api.upload-post.com/upload \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -F "video=@output/compilation.mp4" \
+  -F "title=TikTok Compilation" \
+  -F "platforms=tiktok,youtube,instagram"
+```
+
+Upload-Post provides a single API to publish videos across all major platforms. [Get your API key here](https://upload-post.com).
+
 ## Roadmap
 
 See the [open issues](https://github.com/HA6Bots/TikTok-Compilation-Video-Generator/issues) for a list of proposed features (and known issues).
